@@ -81,6 +81,17 @@ class Length:
         f += 1
         return Length(f, i)
 
+    def __add__(self, other):
+        if isinstance(other, Length):
+            return self.add_length(other)
+        if isinstance(other, int):
+            return self.add_inches(other)
+        else:
+            return NotImplemented
+
+    def __radd__(self, other):
+        return self.__add__(other)
+
 
 length1 = Length(2, 10)
 length2 = Length(3, 5)
